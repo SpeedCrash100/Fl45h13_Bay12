@@ -1,0 +1,40 @@
+name: CI checks
+
+on: [push, pull_request]
+
+jobs:
+  map-tests:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        MAP_PATH: [example, exodus, overmap_example]
+    env:
+      TEST: MAP
+      MAP_PATH: ${{matrix.MAP_PATH}}
+      BYOND_MAJOR: 511
+      BYOND_MINOR: 1385
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Cache BYOND
+        uses: actions/cache@v2
+        env:
+          cache-name: BYOND-${{env.BYOND_MAJOR}}-${{env.BYOND_MINOR}}
+        with:
+          path: ~/BYOND-${{env.BYOND_MAJOR}}.${{env.BYOND_MINOR}}
+          key: map-tests-${{env.cache-name}}
+          restore-keys: |
+            map-tests-${{env.cache-name}}
+
+      - name: Run tests
+        run: tools/scripts/run-test.sh
+
+  code-tests:
+    runs-on: ubuntu-latest
+    env:
+      TEST: CODE
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Run tests
+        run: tools/scripts/run-test.sh

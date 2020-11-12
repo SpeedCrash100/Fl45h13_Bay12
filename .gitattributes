@@ -1,0 +1,9 @@
+# Declare automatic handling of all text files
+* text=auto
+
+# Merger hooks, run tools/hooks/install.bat or install.sh to set up
+*.dmm text merge=dmm
+*.dmi binary merge=dmi
+
+# Force changelog merging to use union
+html/changelog.html text merge=union
