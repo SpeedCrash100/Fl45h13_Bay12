@@ -195,7 +195,7 @@
 				F.flash()
 		if("time")
 			timetoset += text2num(params["adjust"])
-			timetoset = Clamp(timetoset, 0, 36000)
+			timetoset = clamp(timetoset, 0, 36000)
 
 	src.update_icon()
 	return TRUE
@@ -251,7 +251,7 @@
 //Stolen from status_display
 /obj/machinery/door_timer/proc/texticon(var/tn, var/px = 0, var/py = 0)
 	var/image/I = image('icons/obj/status_display.dmi', "blank")
-	var/len = lentext(tn)
+	var/len = length(tn)
 
 	for(var/d = 1 to len)
 		var/char = copytext(tn, len-d+1, len-d+2)
