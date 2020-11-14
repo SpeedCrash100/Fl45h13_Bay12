@@ -328,10 +328,10 @@ var/global/floorIsLava = 0
 				</td>
 				<td width='80%'>
 					<input type='text'
-					       id='filter'
-					       name='filter_text'
-					       value=''
-					       style='width:100%;' />
+						   id='filter'
+						   name='filter_text'
+						   value=''
+						   style='width:100%;' />
 				</td>
 			</tr></table>
 			<hr/>
@@ -1321,11 +1321,11 @@ var/global/floorIsLava = 0
 		return 1
 	else
 		return 0
-	
+
 //Prevents SDQL2 commands from changing admin permissions
 /datum/admins/SDQL_update(var/const/var_name, var/new_value)
 	return 0
-	
+
 //
 //
 //ALL DONE

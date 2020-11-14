@@ -4,14 +4,14 @@ NOTE: IF YOU UPDATE THE REAGENT-SYSTEM, ALSO UPDATE THIS README.
 Structure: ///////////////////          //////////////////////////
 		   // Mob or object // -------> // Reagents var (datum) // 	    Is a reference to the datum that holds the reagents.
 		   ///////////////////          //////////////////////////
-		   			|				    			 |
-    The object that holds everything.   			 V
-		   							      reagent_list var (list)   	A List of datums, each datum is a reagent.
+					|				    			 |
+	The object that holds everything.   			 V
+										  reagent_list var (list)   	A List of datums, each datum is a reagent.
 
-		   							      |          |          |
-		   							      V          V          V
+										  |          |          |
+										  V          V          V
 
-		   							         reagents (datums)	    	Reagents. I.e. Water , antitoxins or mercury.
+											 reagents (datums)	    	Reagents. I.e. Water , antitoxins or mercury.
 
 
 Random important notes:
@@ -105,10 +105,10 @@ About the Holder:
 			Calls each reagent's touch_obj(target).
 
 		trans_to(var/atom/target, var/amount = 1, var/multiplier = 1, var/copy = 0)
-			The general proc for applying reagents to things externally (as opposed to directly injected into the contents). 
+			The general proc for applying reagents to things externally (as opposed to directly injected into the contents).
 			It first calls touch, then the appropriate trans_to_*() or splash_mob().
 			If for some reason you want touch effects to be bypassed (e.g. injecting stuff directly into a reagent container or person), call the appropriate trans_to_*() proc.
-			
+
 			Calls touch() before checking the type of [target], calling splash_mob(target, amount), trans_to_turf(target, amount, multiplier, copy), or trans_to_obj(target, amount, multiplier, copy).
 
 		trans_id_to(var/atom/target, var/id, var/amount = 1)
